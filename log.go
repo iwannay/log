@@ -139,6 +139,11 @@ func JSON(v ...interface{}) {
 		bts []byte
 	)
 	for k, vv := range v {
+
+		if _, ok := vv.(string); ok {
+			continue
+		}
+
 		bts, err = json.MarshalIndent(vv, "", "  ")
 		v[k] = string(bts)
 		if err != nil {
