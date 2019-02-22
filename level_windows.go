@@ -8,4 +8,5 @@ var logLevels = []string{
 	LevelWarn:  "[WARN]", // 黄
 	LevelError: "[ERROR]",
 	LevelFatal: "[FATAL]",
+	LevelPrint: "",
 }
