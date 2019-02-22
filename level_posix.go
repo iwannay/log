@@ -8,5 +8,5 @@ var logLevels = []string{
 	LevelWarn:  "\033[33m[WARN]\033[0m",
 	LevelError: "\033[31m[ERROR]\033[0m",
 	LevelFatal: "\033[35m[FATAL]\033[0m",
-	LevelPrint: "",
+	LevelPrint: "\033[33m",
 }
