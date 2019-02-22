@@ -34,7 +34,7 @@ func output(log *logContent) {
 			DefaultLogger.Output(3, content)
 		}
 	case LevelPrint:
-		DefaultLogger.Output(3, content)
+		DefaultLogger.Output(3, closeColor(content))
 	case LevelFatal:
 		DefaultLogger.Output(3, content)
 		os.Exit(1)

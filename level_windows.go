@@ -10,3 +10,7 @@ var logLevels = []string{
 	LevelFatal: "[FATAL]",
 	LevelPrint: "",
 }
+
+func closeColor(content string) string {
+	return content
+}
