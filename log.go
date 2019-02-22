@@ -18,6 +18,7 @@ const (
 	LevelWarn
 	LevelError
 	LevelFatal
+	LevelPrint
 )
 
 type logContent struct {
@@ -32,6 +33,8 @@ func output(log *logContent) {
 		if log.level >= logLevel {
 			DefaultLogger.Output(3, content)
 		}
+	case LevelPrint:
+		DefaultLogger.Output(3, content)
 	case LevelFatal:
 		DefaultLogger.Output(3, content)
 		os.Exit(1)
@@ -103,7 +106,31 @@ func Errorf(format string, v ...interface{}) {
 }
 
 func Fatalf(format string, v ...interface{}) {
+	output(&logContent{
+		level:   LevelFatal,
+		content: fmt.Sprintf(format, v...),
+	})
+}
 
+func Print(v ...interface{}) {
+	output(&logContent{
+		level:   LevelPrint,
+		content: fmt.Sprintln(v...),
+	})
+}
+
+func Printf(format string, v ...interface{}) {
+	output(&logContent{
+		level:   LevelPrint,
+		content: fmt.Sprintf(format, v...),
+	})
+}
+
+func Println(v ...interface{}) {
+	output(&logContent{
+		level:   LevelPrint,
+		content: fmt.Sprint(v...),
+	})
 }
 
 func JSONf(format string, v ...interface{}) {
