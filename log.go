@@ -133,7 +133,7 @@ func Println(v ...interface{}) {
 	})
 }
 
-func JSONf(format string, v ...interface{}) {
+func JSON(v ...interface{}) {
 	var (
 		err error
 		bts []byte
@@ -148,7 +148,7 @@ func JSONf(format string, v ...interface{}) {
 
 	output(&logContent{
 		level:   LevelPrint,
-		content: fmt.Sprintf(format, v...),
+		content: fmt.Sprint(v...),
 	})
 }
 
