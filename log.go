@@ -147,7 +147,7 @@ func JSONf(format string, v ...interface{}) {
 	}
 
 	output(&logContent{
-		level:   LevelFatal,
+		level:   LevelPrint,
 		content: fmt.Sprintf(format, v...),
 	})
 }
