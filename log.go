@@ -1,6 +1,7 @@
 package log
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -102,6 +103,22 @@ func Errorf(format string, v ...interface{}) {
 }
 
 func Fatalf(format string, v ...interface{}) {
+
+}
+
+func JSONf(format string, v ...interface{}) {
+	var (
+		err error
+		bts []byte
+	)
+	for k, vv := range v {
+		bts, err = json.MarshalIndent(vv, "", "  ")
+		v[k] = string(bts)
+		if err != nil {
+			Debug(err)
+		}
+	}
+
 	output(&logContent{
 		level:   LevelFatal,
 		content: fmt.Sprintf(format, v...),
